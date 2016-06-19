@@ -1,0 +1,41 @@
+{
+  "app": {
+    "launch": {
+      "local_path": "dialog.html"
+    }
+  },
+  "description": "",
+  "icons": {
+    "128": "img/icon128.png",
+    "16": "img/icon16.png",
+    "48": "img/icon48.png"
+  },
+  "manifest_version": 2,
+  "name": "Utils",
+  "offline_enabled": true,
+  "optional_permissions": [
+    "*://*/*"
+  ],
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "*://*/*"
+  ],
+  "background": {
+    "scripts": [
+      "base64.js",
+      "jquery.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "common.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": ["dialog.html"],
+  "version": "1.0.0"
+}
