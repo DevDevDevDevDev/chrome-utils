@@ -85,3 +85,22 @@ chrome.contextMenus.create({
         }
     }
 });
+
+// On right click, show the option Copy to PickyJSON
+chrome.contextMenus.create({
+    title: 'JSON Editor',
+    contexts: ['selection'],
+    onclick: function onclick(info, sender) {
+
+        chrome.storage.local.set({
+            'jsonEditorData': info.selectionText
+        }, function () {
+            chrome.tabs.create({url: 'http://www.jsoneditoronline.org/'}, function (tab) {
+                chrome.tabs.executeScript(tab.id, {
+                    code: "chrome.storage.local.get('jsonEditorData', function(data){localStorage.data = data.jsonEditorData;})",
+                    runAt: "document_start"
+                });
+            });
+        });
+    }
+});

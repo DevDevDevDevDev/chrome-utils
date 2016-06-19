@@ -19,7 +19,8 @@
   "permissions": [
     "contextMenus",
     "tabs",
-    "*://*/*"
+    "*://*/*",
+    "storage"
   ],
   "background": {
     "scripts": [
